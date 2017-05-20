@@ -1,4 +1,4 @@
-function [C BETA] = optimumprop(aerofunc, BLADE, cd0, vel, rpm, power, blades)
+function [C BETA] = optimumprop(aerofunc, BLADE, cd0, vel, rpm, power, blades, rho)
 
   % This function uses Goldstein's equations in conjunction with BEMT to produce 
   % an ideal prop geometry. See Design of Optimum Propellers, Adkins & Liebeck, 1994.
@@ -9,7 +9,6 @@ function [C BETA] = optimumprop(aerofunc, BLADE, cd0, vel, rpm, power, blades)
   omega = rpm*2*pi/60
   zeta = 0;
   Cp = 2*power/rho/vel^3/pi/rad^2;
-  BLADE = 0.08:(0.8-0.08)/100:0.8;
   XI = BLADE/rad;
   lambda = vel/omega/rad;
   X = omega*BLADE/vel;
